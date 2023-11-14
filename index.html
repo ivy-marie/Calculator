@@ -11,35 +11,81 @@
     <table> 
         <tr> 
             <td colspan="3"> 
-                <input type="text" id="result"> 
+                <input type="text" id="result" disabled> 
             </td> 
-            <td><input type="button"  id="clear" value="c" ></td> 
+            <td><input type="button"  onclick="clearInput()" value="c" ></td> 
         </tr> 
 
         <tr> 
-            <td><input type="button" value="1"></td> 
-            <td><input type="button" value="2"></td> 
-            <td><input type="button" value="3"></td> 
-            <td><input type="button" value="/"></td> 
+            <td><input type="button" onclick="append(1)" value="1"></td> 
+            <td><input type="button" onclick="append(2)" value="2"></td> 
+            <td><input type="button" onclick="append(3)" value="3"></td> 
+            <td><input type="button" onclick="divide()" value="/"></td> 
         </tr> 
         <tr> 
-            <td><input type="button" value="4"></td> 
-            <td><input type="button" value="5"></td> 
-            <td><input type="button" value="6"></td> 
-            <td><input type="button" value="-"></td> 
+            <td><input type="button" onclick="append(4)" value="4"></td> 
+            <td><input type="button" onclick="append(5)" value="5"></td> 
+            <td><input type="button" onclick="append(6)" value="6"></td> 
+            <td><input type="button" onclick="subtract()" value="-"></td> 
         </tr> 
         <tr> 
-            <td><input type="button" value="7"></td> 
-            <td><input type="button" value="8"></td> 
-            <td><input type="button" value="9"></td> 
-            <td><input type="button" value="+"></td> 
+            <td><input type="button" onclick="append(7)"value="7"></td> 
+            <td><input type="button" onclick="append(8)"value="8"></td> 
+            <td><input type="button" onclick="append(9)"value="9"></td> 
+            <td><input type="button" onclick="add()"value="+"></td> 
         </tr> 
         <tr> 
-            <td><input type="button" value="."></td> 
-            <td><input type="button" value="0"></td> 
-            <td><input type="button" id="equal" value="=" ></td> 
-            <td><input type="button" value="*"></td> 
+            <td><input type="button" onclick="append(.)"value="."></td> 
+            <td><input type="button" onclick="append(0)"value="0"></td> 
+            <td><input type="button" onclick="calculate()" value="=" ></td> 
+            <td><input type="button" onclick="multiply()"value="*"></td> 
         </tr> 
     </table> 
 </body>
+    <script>
+        let currentInput = '';
+        let currentOperator = '';
+
+        function append(number){
+             currentInput += number;
+             document.getElementById('result').value = currentInput;
+        }
+
+         function add(){
+             currentOperator = '+';
+             currentInput += currentOperator;
+             document.getElementById('result').value = currentInput;
+        }
+
+         function subtract(){
+             currentOperator = '-';
+             currentInput += currentOperator;
+             document.getElementById('result').value = currentInput;
+        }
+
+         function multiply(){
+             currentOperator = '*';
+             currentInput += currentOperator;
+             document.getElementById('result').value = currentInput;
+        }
+
+         function divide(){
+             currentOperator = '/';
+             currentInput += currentOperator;
+             document.getElementById('result').value = currentInput;
+        }
+
+         function clearInput(){
+             currentOperator = '';
+             currentOperator = '';
+             document.getElementById('result').value = '';
+        }
+
+         function calculate(){
+             const result = eval(currentInput);
+             document.getElementById('result').value = result;
+             currentInput = result.toString();
+             currentOperator = '';
+        }   
+    </script>
 </html>
